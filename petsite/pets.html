@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pet Adoption Center</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .pet { border: 2px solid #ccc; margin: 10px; padding: 15px; }
+        .available { border-color: green; }
+        .adopted { border-color: red; opacity: 0.5; }
+    </style>
+</head>
+<body>
+    <h1>Happy Paws Adoption Center</h1>
+    <div id="pet-list"></div>
+    <div class="${cssClass}"></div>
+
+    
+    
+    <script> 
+        let pets = [
+            { name: "Garfield", type: "Cat", age: 3, adopted: false },
+            { name: "Jerry", type: "Dog", age: 5, adopted: false },
+            { name: "John", type: "Turtle", age: 10, adopted: false },
+            { name: "Sifu", type: "Cat", age: 7, adopted: false }
+        ];
+
+        function displayPet(pet) {
+            let cssClass = pet.adopted ? "pet adopted" : "pet available";
+            let petStatus = pet.adopted ? "Un-Adopt" : "Adopt Pet";
+            let html = `<div class="${cssClass}">
+                <h2>Pet Name: ${pet.name}</h2> 
+                <p>Pet Type: ${pet.type}</p>
+                <p>Pet Age: ${pet.age}</p>
+                <p>Adoption Status: ${pet.adopted}</p>
+                <button type="button" id="${pet.name}">${petStatus}</button>
+                </div>`;
+                
+            return html;
+        }
+
+        function showAllPets(){
+            const petList = document.getElementById("pet-list");
+            petList.innerHTML = null
+            pets.forEach(pet => {
+                petList.innerHTML += displayPet(pet);
+            })
+
+            const buttons = document.querySelectorAll("button");
+
+            buttons.forEach(button => {
+                button.addEventListener("click", (event) => { 
+                    adoptPet(event.target.id); 
+                });
+            });
+        }
+
+        function adoptPet(petName) {
+            for (let pet of pets) {
+                if (pet.name === petName) {
+                    pet.adopted = !pet.adopted;
+                    break;
+                }
+            }
+            showAllPets();
+        }
+
+        
+        showAllPets();
+        
+
+    </script>
+</body>
+</html>

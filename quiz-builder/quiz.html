@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>My Awesome Quiz</h1>
+
+    <form id="quiz-form">
+        
+        <div class="question">
+            <p>What is your favorite color?</p>
+            <input type="radio" name="q1" value="red" id="red">
+            <label for="red">Red</label>
+            <input type="radio" name="q1" value="blue" id="blue">
+            <label for="blue">Blue</label>
+            <input type="radio" name="q1" value="green" id="green">
+            <label for="green">Green</label>
+        </div>
+
+        <div class="question">
+            <p>What topics will be in the SBA?</p>
+            <input type="checkbox" id="html" name="sba-topics" value="html" >
+            <label for="html">HTML</label>
+            <input type="checkbox" id="css" name="sba-topics" value="css" >
+            <label for="css">css</label>
+            <input type="checkbox" id="javascipt" name="sba-topics" value="javascipt" >
+            <label for="javascipt">javascipt</label>
+            <input type="checkbox" id="svelte" name="sba-topics" value="svelte" >
+            <label for="svelte">svelte</label>
+        </div>
+
+        <div class="question">
+            <p>What is your favorite subject?</p>
+            <label for="subject">Enter subject</label>
+            <input type="text" id="subject" name="subject" required>
+        </div>
+
+        <button type="submit" id="submit-btn">Check Answers</button>
+    </form>
+
+    <div id="results"></div>
+
+
+    <script>
+        const answers = {
+            q1: "green",
+            q2: ["html","css","javascript"],
+            q3: ["web 1","fundamentals of web development","id512"]
+        }
+
+        
+        //trigger marking process
+        //const submitBtn = document.querySelector("#submit-btn");
+        const quizForm = document.getElementById("quiz-form");
+        quizForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+        })
+
+        let score = 0;
+        let total = 3;
+        let feedback = "";
+
+        //get form answers from user
+        const q1 = document.querySelector('input[name="q1"]:checked');
+        if (q1 && q1.value == answers.q1) {
+            score++
+            feedback += `<p> Q1 is correct!</p>`;
+        }
+        else {
+            feedback += "<p> Q1 is incorrect. Correct answer: green </p>"
+        }
+
+
+        //take away capitals
+
+        //check user answers match correct answers
+
+        //give user feedback
+
+
+    </script>
+
+</body>
+
+</html>

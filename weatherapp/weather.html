@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Widget</title>
+</head>
+<body>
+  <div class="weather"></div>
+
+  <script>
+    const apiUrl = "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m";
+
+    async function getData() {
+      const response = await fetch(apiUrl);
+      const weatherData = await response.json();
+      displayWeather(weatherData);
+    }
+
+    function displayWeather(data) {
+      const container = document.querySelector(".weather");
+
+      const weatherHTML = `
+        <h1>Weather</h1>
+        <h2>Stats</h2>
+        <p>Latitude: ${data.latitude}</p>
+        <p>Longitude: ${data.longitude}</p>
+        <p>Timezone: ${data.timezone}</p>
+        <p>Elevation: ${data.elevation}</p>
+        <p>Temperature Unit: ${data.hourly_units.temperature_2m}</p>
+        <h3>First 5 Temperatures:</h3>
+        <ul>
+          ${data.hourly.temperature_2m.slice(0, 5).map(temp => `<li>${temp}</li>`).join('')}
+        </ul>
+      `;
+
+      container.innerHTML = weatherHTML;
+    }
+
+    getData();
+  </script>
+</body>
+</html>

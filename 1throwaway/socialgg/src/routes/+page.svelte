@@ -3,14 +3,14 @@
     let posts = [
     {
         username: "sunny_skies",
-        avatar: "https://example.com/avatar1.jpg",
+        avatar: "https://tse2.mm.bing.net/th/id/OIP.Ai9h_6D7ojZdsZnE4_6SDgAAAA?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3",
         postDate: "2025-10-01",
         postText: "Loving the spring vibes in Dunedin 🌸",
         likes: 120
     },
     {
         username: "code_wizard",
-        avatar: "https://example.com/avatar2.jpg",
+        avatar: "https://tse2.mm.bing.net/th/id/OIP.Ai9h_6D7ojZdsZnE4_6SDgAAAA?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3",
         postDate: "2025-10-02",
         postText: "Just solved a tricky bug in my JavaScript project. Feeling accomplished!",
         likes: 89
@@ -72,7 +72,15 @@
         likes: 88
     }
 ];
-
 </script>
 
-<Post postData={posts[0]} />
+{#each posts as post}
+    <Post postData={post} />
+{/each}
+
+
+<style>
+    :global(body) {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+</style>

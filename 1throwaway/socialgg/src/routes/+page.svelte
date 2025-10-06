@@ -1,4 +1,5 @@
 <script>
+    import Post from '$lib/components/post.svelte';
     let posts = [
     {
         username: "sunny_skies",
@@ -73,3 +74,5 @@
 ];
 
 </script>
+
+<Post postData={posts[0]} />

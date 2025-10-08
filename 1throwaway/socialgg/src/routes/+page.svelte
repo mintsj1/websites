@@ -78,8 +78,3 @@
     <Post postData={post} />
 {/each}
 
-<style>
-    :global(body) {
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
-</style>
